@@ -27,6 +27,7 @@ class AckedBy(PluginBase):
 
         if status == 'open':
             alert.attributes['acked-by'] = None
+            alert.attributes['jirakey'] = None
         return alert
 
     def take_action(self, alert, action, text, **kwargs):
@@ -35,7 +36,6 @@ class AckedBy(PluginBase):
             watch = 'watch:' + g.login
             alert.tags.append(watch)
             alert.attributes['acked-by'] = g.login
-            alert.attributes['jirakey'] = None
         if action == 'unack':
             alert.attributes['acked-by'] = None
         return alert
