@@ -35,6 +35,7 @@ class AckedBy(PluginBase):
             watch = 'watch:' + g.login
             alert.tags.append(watch)
             alert.attributes['acked-by'] = g.login
+            alert.attributes['jirakey'] = None
         if action == 'unack':
             alert.attributes['acked-by'] = None
         return alert
